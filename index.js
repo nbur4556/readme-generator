@@ -1,8 +1,10 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
 
-getUserInput()
-console.log(buildMarkdownFile());
+// getUserInput()
+writeMarkdownFile(buildMarkdownFile());
 
+// Gets input from user and stores in userInput object
 async function getUserInput() {
     const userInput = {
         title: '',
@@ -27,6 +29,7 @@ async function getUserInput() {
     console.log(userInput);
 }
 
+// Prompts a message to the user, and promises a value
 function promptUser(msg) {
     return new Promise((resolve, reject) => {
         inquirer.prompt({
@@ -41,40 +44,59 @@ function promptUser(msg) {
     })
 }
 
+// Returns text for a markdown file
 function buildMarkdownFile() {
     return (`
-        # TITLE
-        
-        ## Description
+# TITLE
 
-        DESCRIPTION
+## Description
 
-        ## Table of Contents
+DESCRIPTION
 
-        TABLE OF CONTENTS
+## Table of Contents
 
-        ## Installation
+TABLE OF CONTENTS
 
-        INSTALLATION
+## Installation
 
-        ## Usage
+INSTALLATION
 
-        USAGE
+## Usage
 
-        ## License
+USAGE
 
-        LICENSE
+## License
 
-        ## Contributors
+LICENSE
 
-        CONTRIBUTORS
+## Contributors
 
-        ## Tests
+CONTRIBUTORS
 
-        TESTS
+## Tests
 
-        ## Questions
+TESTS
 
-        QUESTIONS
+## Questions
+
+QUESTIONS
     `)
+}
+
+// Creates or overwrites a markdown file
+function writeMarkdownFile(data, fileName = `README.md`) {
+    // Check if directory exists
+    if (fs.existsSync('./results') != true) {
+        // If directory does not exist, create directory
+        fs.mkdir('./results', (err) => {
+            if (err) throw err;
+
+            console.log('Make directory successful');
+        })
+    }
+
+    // Write file
+    fs.writeFile(`./results/${fileName}`, data, () => {
+        console.log(`Write file successful`);
+    })
 }
