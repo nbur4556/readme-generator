@@ -1,21 +1,22 @@
 const inquirer = require('inquirer');
 
-getUserInput();
+ask();
 
-async function getUserInput() {
-    await inquirer.prompt({
-        message: 'Enter any value',
-        name: 'promptValue',
-        type: 'input'
-    }).then(answer => {
-        console.log(answer.promptValue);
-    })
+async function ask() {
+    console.log(await promptUser('Hello'));
+    console.log(await promptUser('How are you?'));
+}
 
-    await inquirer.prompt({
-        message: 'Enter new value',
-        name: 'promptValue',
-        type: 'input'
-    }).then(answer => {
-        console.log(answer.promptValue);
+function promptUser(msg) {
+    return new Promise((resolve, reject) => {
+        inquirer.prompt({
+            message: msg,
+            name: 'promptValue',
+            type: 'input'
+        }).then(answer => {
+            resolve(answer.promptValue);
+        }).catch((err) => {
+            reject(err);
+        });
     })
 }
