@@ -1,8 +1,11 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-// getUserInput()
-writeMarkdownFile(buildMarkdownFile());
+// Runtime
+getUserInput()
+    .then(() => {
+        writeMarkdownFile(buildMarkdownFile());
+    });
 
 // Gets input from user and stores in userInput object
 async function getUserInput() {
@@ -15,7 +18,7 @@ async function getUserInput() {
         contributors: '',
         tests: '',
         questions: ''
-    }
+    };
 
     userInput.title = await promptUser('What is the project title?');
     userInput.description = await promptUser('What is the project description');
@@ -25,8 +28,6 @@ async function getUserInput() {
     userInput.contributors = await promptUser('Who are the contributors of the project?');
     userInput.tests = await promptUser('What tests were used on the project');
     userInput.questions = await promptUser('What is the contact information for the project?');
-
-    console.log(userInput);
 }
 
 // Prompts a message to the user, and promises a value
@@ -80,7 +81,7 @@ TESTS
 ## Questions
 
 QUESTIONS
-    `)
+    `);
 }
 
 // Creates or overwrites a markdown file
