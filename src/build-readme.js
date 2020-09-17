@@ -1,13 +1,11 @@
 // Returns text for a markdown file
-function buildMarkdownFile(data) {
-    console.log(data);
-
+function buildMarkdownFile({ title, description, installation, usage, license, contributors, tests, questions }) {
     return (`
-# TITLE
+# ${title}
 
 ## Description
 
-DESCRIPTION
+${description}
 
 ## Table of Contents
 
@@ -15,27 +13,27 @@ TABLE OF CONTENTS
 
 ## Installation
 
-INSTALLATION
+${installation}
 
 ## Usage
 
-USAGE
+${usage}
 
 ## License
 
-LICENSE
+${license}
 
 ## Contributors
 
-CONTRIBUTORS
+${contributors}
 
 ## Tests
 
-TESTS
+${tests}
 
 ## Questions
 
-QUESTIONS
+${questions}
     `);
 }
 
