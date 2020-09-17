@@ -1,6 +1,17 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
+const userInput = {
+    title: '',
+    description: '',
+    installation: '',
+    usage: '',
+    license: '',
+    contributors: '',
+    tests: '',
+    questions: ''
+};
+
 // Runtime
 getUserInput()
     .then(() => {
@@ -9,17 +20,6 @@ getUserInput()
 
 // Gets input from user and stores in userInput object
 async function getUserInput() {
-    const userInput = {
-        title: '',
-        description: '',
-        installation: '',
-        usage: '',
-        license: '',
-        contributors: '',
-        tests: '',
-        questions: ''
-    };
-
     userInput.title = await promptUser('What is the project title?');
     userInput.description = await promptUser('What is the project description');
     userInput.installation = await promptUser('What are the installation instructions for the project?');
@@ -47,6 +47,8 @@ function promptUser(msg) {
 
 // Returns text for a markdown file
 function buildMarkdownFile() {
+    console.log(userInput);
+
     return (`
 # TITLE
 
