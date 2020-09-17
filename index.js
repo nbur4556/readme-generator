@@ -1,33 +1,34 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const readme = require('./src/build-readme.js');
+
+const userData = {
+    title: '',
+    description: '',
+    installation: '',
+    usage: '',
+    license: '',
+    contributors: '',
+    tests: '',
+    questions: ''
+};
 
 // Runtime
 getUserInput()
     .then(() => {
-        writeMarkdownFile(buildMarkdownFile());
+        writeMarkdownFile(readme.buildMarkdownFile('success!'));
     });
 
 // Gets input from user and stores in userInput object
 async function getUserInput() {
-    const userInput = {
-        title: '',
-        description: '',
-        installation: '',
-        usage: '',
-        license: '',
-        contributors: '',
-        tests: '',
-        questions: ''
-    };
-
-    userInput.title = await promptUser('What is the project title?');
-    userInput.description = await promptUser('What is the project description');
-    userInput.installation = await promptUser('What are the installation instructions for the project?');
-    userInput.usage = await promptUser('What are the usage instructions for the project?');
-    userInput.license = await promptUser('What license does the project use?');
-    userInput.contributors = await promptUser('Who are the contributors of the project?');
-    userInput.tests = await promptUser('What tests were used on the project');
-    userInput.questions = await promptUser('What is the contact information for the project?');
+    userData.title = await promptUser('What is the project title?');
+    userData.description = await promptUser('What is the project description');
+    userData.installation = await promptUser('What are the installation instructions for the project?');
+    userData.usage = await promptUser('What are the usage instructions for the project?');
+    userData.license = await promptUser('What license does the project use?');
+    userData.contributors = await promptUser('Who are the contributors of the project?');
+    userData.tests = await promptUser('What tests were used on the project');
+    userData.questions = await promptUser('What is the contact information for the project?');
 }
 
 // Prompts a message to the user, and promises a value
@@ -43,45 +44,6 @@ function promptUser(msg) {
             reject(err);
         });
     })
-}
-
-// Returns text for a markdown file
-function buildMarkdownFile() {
-    return (`
-# TITLE
-
-## Description
-
-DESCRIPTION
-
-## Table of Contents
-
-TABLE OF CONTENTS
-
-## Installation
-
-INSTALLATION
-
-## Usage
-
-USAGE
-
-## License
-
-LICENSE
-
-## Contributors
-
-CONTRIBUTORS
-
-## Tests
-
-TESTS
-
-## Questions
-
-QUESTIONS
-    `);
 }
 
 // Creates or overwrites a markdown file
