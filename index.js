@@ -16,7 +16,7 @@ const userData = {
 // Runtime
 getUserInput()
     .then(() => {
-        writeMarkdownFile(readme.buildMarkdownFile('success!'));
+        writeMarkdownFile(readme.buildMarkdownFile(userData));
     });
 
 // Gets input from user and stores in userInput object
