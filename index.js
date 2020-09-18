@@ -14,8 +14,6 @@ const userData = {
     questions: ''
 };
 
-console.log(licenses);
-
 // Runtime
 getUserInput()
     .then(() => {
@@ -32,6 +30,8 @@ async function getUserInput() {
     userData.contributors = await promptUser('Who are the contributors of the project?');
     userData.tests = await promptUser('What tests were used on the project');
     userData.questions = await promptUser('What is the contact information for the project?');
+
+    console.log(getLicenseByName(userData.license));
 }
 
 // Prompts a message to the user, and promises a value
@@ -48,7 +48,7 @@ function promptUser(msg) {
         });
     })
 }
-
+// Prompts a message and list of options to the user, and promises a value
 function promptUserList(msg, options) {
     return new Promise((resolve, reject) => {
         inquirer.prompt({
@@ -80,4 +80,12 @@ function writeMarkdownFile(data, fileName = `README.md`) {
     fs.writeFile(`./results/${fileName}`, data, () => {
         console.log(`Write file successful`);
     })
+}
+
+function getLicenseByName(name) {
+    for (let license of licenses) {
+        if (license.name == name) {
+            return license;
+        }
+    }
 }
