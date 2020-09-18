@@ -25,7 +25,9 @@ async function getUserInput() {
     userData.description = await promptUser('What is the project description');
     userData.installation = await promptUser('What are the installation instructions for the project?');
     userData.usage = await promptUser('What are the usage instructions for the project?');
-    userData.license = await promptUser('What license does the project use?');
+    userData.license = await promptUserList('What license does the project use?', [
+        'License 1', 'License 2', 'License 3', 'License 4', 'License 5'
+    ]);
     userData.contributors = await promptUser('Who are the contributors of the project?');
     userData.tests = await promptUser('What tests were used on the project');
     userData.questions = await promptUser('What is the contact information for the project?');
@@ -44,6 +46,21 @@ function promptUser(msg) {
             reject(err);
         });
     })
+}
+
+function promptUserList(msg, options) {
+    return new Promise((resolve, reject) => {
+        inquirer.prompt({
+            message: msg,
+            name: 'promptValue',
+            type: 'list',
+            choices: options
+        }).then(answer => {
+            resolve(answer.promptValue);
+        }).catch((err) => {
+            reject(err);
+        });
+    });
 }
 
 // Creates or overwrites a markdown file
