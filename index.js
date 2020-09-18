@@ -14,6 +14,8 @@ const userData = {
     questions: ''
 };
 
+console.log(licenses);
+
 // Runtime
 getUserInput()
     .then(() => {
