@@ -22,16 +22,18 @@ getUserInput()
 
 // Gets input from user and stores in userInput object
 async function getUserInput() {
+    let licenseName;
+
     userData.title = await promptUser('What is the project title?');
     userData.description = await promptUser('What is the project description');
     userData.installation = await promptUser('What are the installation instructions for the project?');
     userData.usage = await promptUser('What are the usage instructions for the project?');
-    userData.license = await promptUserList('What license does the project use?', licenses);
+    licenseName = await promptUserList('What license does the project use?', licenses);
     userData.contributors = await promptUser('Who are the contributors of the project?');
     userData.tests = await promptUser('What tests were used on the project');
     userData.questions = await promptUser('What is the contact information for the project?');
 
-    console.log(getLicenseByName(userData.license));
+    userData.license = getLicenseByName(licenseName);
 }
 
 // Prompts a message to the user, and promises a value

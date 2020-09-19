@@ -26,7 +26,8 @@ ${usage}
 
 ## License
 
-${license}
+${license.badgeLink}
+${license.name}
 
 ## Contributors
 
