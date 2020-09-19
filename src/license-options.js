@@ -25,8 +25,6 @@ const allLicenses = [
         '[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)'),
     new License('Creative Commons Attribution Share Alike 4.0',
         '[![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)'),
-    new License('Do What The F*ck You Want To Public License',
-        '[![License: WTFPL](https://img.shields.io/badge/License-WTFPL-brightgreen.svg)](http://www.wtfpl.net/about/)'),
     new License('Educational Community License v2.0'),
     new License('Eclipse Public License 1.0',
         '[![License](https://img.shields.io/badge/License-EPL%201.0-red.svg)](https://opensource.org/licenses/EPL-1.0)'),
