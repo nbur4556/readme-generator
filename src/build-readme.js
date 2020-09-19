@@ -1,6 +1,8 @@
 // Returns text for a markdown file
 function buildMarkdownFile({ title, description, installation, usage, license, contributors, tests, questions }) {
     return (`
+${license.badgeLink}
+
 # ${title}
 
 ## Description
@@ -26,8 +28,7 @@ ${usage}
 
 ## License
 
-${license.badgeLink}
-${license.name}
+${title} is licensed under ${license.name}.
 
 ## Contributors
 
