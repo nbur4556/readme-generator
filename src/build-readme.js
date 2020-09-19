@@ -28,7 +28,7 @@ ${usage}
 
 ## License
 
-${title} is licensed under ${license.name}.
+${title} is licensed under [${license.name}](${license.link}).
 
 ## Contributors
 
