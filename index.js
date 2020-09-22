@@ -33,8 +33,8 @@ async function getUserInput() {
     userData.installation = await promptUser('What are the installation instructions for the project?');
     userData.usage = await promptUser('What are the usage instructions for the project?');
     licenseName = await promptUserList('What license does the project use?', licenses);
-    userData.contribution = await promptUser('Who are the contributors of the project?');
-    userData.tests = await promptUser('What tests were used on the project');
+    userData.contribution = await promptUser('What are the contribution guidelines for this project?');
+    userData.tests = await promptUser('What are the testing instructions for the project?');
     userData.contact.github = await promptUser('What is your Github user name?');
     userData.contact.phoneNumber = await promptUser('What is your phone number?');
     userData.contact.email = await promptUser('What is your email?');
