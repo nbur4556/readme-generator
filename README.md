@@ -5,7 +5,7 @@
 
 ## Description
 
-Generates a readme file for your github project.
+Generates a readme file for your Github project.
 
 ## Table of Contents
 
