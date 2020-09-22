@@ -80,14 +80,13 @@ function writeMarkdownFile(data, fileName = `README.md`) {
         // If directory does not exist, create directory
         fs.mkdir('./results', (err) => {
             if (err) throw err;
-
-            console.log('Make directory successful');
         })
     }
 
     // Write file
     fs.writeFile(`./results/${fileName}`, data, () => {
         console.log(`Write file successful`);
+        console.log(`\nReadme file can be located at ./results/${fileName}\n`)
     })
 }
 
