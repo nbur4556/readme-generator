@@ -86,7 +86,7 @@ function writeMarkdownFile(data, fileName = `README.md`) {
     // Write file
     fs.writeFile(`./results/${fileName}`, data, () => {
         console.log(`Write file successful`);
-        console.log(`\nReadme file can be located at ./results/${fileName}\n`)
+        console.log(`\nReadme file can be located at ${process.argv[1]}/results/\n`)
     })
 }
 
