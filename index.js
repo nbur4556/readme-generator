@@ -3,6 +3,7 @@ const fs = require('fs');
 const readme = require('./src/build-readme.js');
 const licenses = require('./src/license-options.js');
 
+// Contains all data sent to build readme file
 const userData = {
     title: '',
     description: '',
@@ -13,7 +14,6 @@ const userData = {
     tests: '',
     contact: {
         github: '',
-        phoneNumber: '',
         email: ''
     }
 };
@@ -28,6 +28,7 @@ getUserInput()
 async function getUserInput() {
     let licenseName;
 
+    // Prompts user for information to build readme
     userData.title = await promptUser('What is the project title?');
     userData.description = await promptUser('What is the project description');
     userData.installation = await promptUser('What are the installation instructions for the project?');
@@ -36,9 +37,9 @@ async function getUserInput() {
     userData.contribution = await promptUser('What are the contribution guidelines for this project?');
     userData.tests = await promptUser('What are the testing instructions for the project?');
     userData.contact.github = await promptUser('What is your Github user name?');
-    userData.contact.phoneNumber = await promptUser('What is your phone number?');
     userData.contact.email = await promptUser('What is your email?');
 
+    // Set license object
     userData.license = getLicenseByName(licenseName);
 }
 
@@ -90,6 +91,7 @@ function writeMarkdownFile(data, fileName = `README.md`) {
     })
 }
 
+// Returns license object by license name
 function getLicenseByName(name) {
     for (let license of licenses) {
         if (license.name == name) {
