@@ -98,9 +98,12 @@ function writeMarkdownFile(data, fileName = `README.md`) {
     })
 }
 
+// Creates relative path string with userData.title as a directory
 function getRelativePath() {
-    let relativePath = `results\\${userData.title.toLowerCase()}`;
-    return relativePath;
+    let titleDir = userData.title.toLowerCase();
+    titleDir = titleDir.replace(' ', '_');
+
+    return `results\\${titleDir}`;
 }
 
 // Returns license object by license name
