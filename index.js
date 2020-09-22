@@ -76,15 +76,15 @@ function promptUserList(msg, options) {
 // Creates or overwrites a markdown file
 function writeMarkdownFile(data, fileName = `README.md`) {
     // Check if directory exists
-    if (fs.existsSync('./results') != true) {
+    if (fs.existsSync(`./results/${userData.title}`) != true) {
         // If directory does not exist, create directory
-        fs.mkdir('./results', (err) => {
+        fs.mkdir(`./results/${userData.title}`, (err) => {
             if (err) throw err;
         })
     }
 
     // Write file
-    fs.writeFile(`./results/${fileName}`, data, () => {
+    fs.writeFile(`./results/${userData.title}/${fileName}`, data, () => {
         console.log(`Write file successful`);
         console.log(`\nReadme file can be located at ${process.argv[1]}/results/\n`)
     })
