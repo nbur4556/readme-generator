@@ -40,9 +40,10 @@ ${tests}
 
 ## Contact
 
-${contact.github}
-${contact.phoneNumber}
-${contact.email}
+Reach out to me at the following
+
+* Github: [https://github.com/${contact.github}](https://github.com/${contact.github})
+* Email: ${contact.email}
     `);
 }
 
