@@ -75,19 +75,35 @@ function promptUserList(msg, options) {
 
 // Creates or overwrites a markdown file
 function writeMarkdownFile(data, fileName = `README.md`) {
+    const path = getRelativePath();
+
     // Check if directory exists
-    if (fs.existsSync('./results') != true) {
+    if (fs.existsSync(`.\\results`) != true) {
         // If directory does not exist, create directory
-        fs.mkdir('./results', (err) => {
+        fs.mkdir(`.\\results`, (err) => {
             if (err) throw err;
-        })
+        });
+    }
+    if (fs.existsSync(path) != true) {
+        // If directory does not exist, create directory
+        fs.mkdir(path, (err) => {
+            if (err) throw err;
+        });
     }
 
     // Write file
-    fs.writeFile(`./results/${fileName}`, data, () => {
+    fs.writeFile(`${path}\\${fileName}`, data, () => {
         console.log(`Write file successful`);
-        console.log(`\nReadme file can be located at ${process.argv[1]}/results/\n`)
+        console.log(`\nReadme file can be located at ${process.argv[1]}\\${path}\n`)
     })
+}
+
+// Creates relative path string with userData.title as a directory
+function getRelativePath() {
+    let titleDir = userData.title.toLowerCase();
+    titleDir = titleDir.replace(' ', '_');
+
+    return `results\\${titleDir}`;
 }
 
 // Returns license object by license name
