@@ -11,12 +11,12 @@ ${description}
 
 ## Table of Contents
 
-[Installation](#Installation)
-[Usage](#Usage)
-[License](#License)
-[Contribution](#Contribution)
-[Tests](#Tests)
-[Contact](#Contact)
+* [Installation](#Installation)
+* [Usage](#Usage)
+* [License](#License)
+* [Contribution](#Contribution)
+* [Tests](#Tests)
+* [Contact](#Contact)
 
 ## Installation
 
